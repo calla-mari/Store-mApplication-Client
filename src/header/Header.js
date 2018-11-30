@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button } from 'react-bootstrap'
+import { Button } from 'antd'
 
 import './Header.scss'
 
@@ -8,6 +8,9 @@ const authenticatedOptions = (
   <React.Fragment>
     <Link to="/change-password">Change Password</Link>
     <Link to="/sign-out">Sign Out</Link>
+    <Link to="/">
+      <Button type="primary" shape="circle" icon="home" />
+    </Link>
   </React.Fragment>
 )
 
@@ -17,14 +20,13 @@ const unauthenticatedOptions = (
       <button type="button">Sign Up</button>
     </Link>
     <Link to="/sign-in">
-      <button type="button">Sign In</button>
+      <Button type="primary">Sign In</Button>
     </Link>
   </React.Fragment>
 )
 
 const alwaysOptions = (
   <React.Fragment>
-    <Link to="/">Home</Link>
   </React.Fragment>
 )
 
