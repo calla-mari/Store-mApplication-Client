@@ -9,6 +9,10 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 
+import Home from './Home.js'
+import List from './List.js'
+import ItemNew from './ItemNew.js'
+
 class App extends Component {
   constructor () {
     super()
@@ -54,6 +58,9 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword flash={this.flash} user={user} />
           )} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/list" component={List} />
+          <Route exact path="/item/new" component={ItemNew} />
         </main>
       </React.Fragment>
     )
