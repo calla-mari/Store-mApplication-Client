@@ -1,9 +1,12 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-
+import { Row, Col, Icon } from 'antd'
 import { signIn } from '../api'
 import messages from '../messages'
 import apiUrl from '../../apiConfig'
+
+import './SignIn.scss'
 
 class SignIn extends Component {
   constructor () {
@@ -38,28 +41,35 @@ class SignIn extends Component {
     const { email, password } = this.state
 
     return (
-      <form className='auth-form' onSubmit={this.signIn}>
-        <h3>Sign In</h3>
-        <label htmlFor="email">Email</label>
-        <input
-          required
-          type="email"
-          name="email"
-          value={email}
-          placeholder="Email"
-          onChange={this.handleChange}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          required
-          name="password"
-          value={password}
-          type="password"
-          placeholder="Password"
-          onChange={this.handleChange}
-        />
-        <button type="submit">Sign In</button>
-      </form>
+      <div className="sign-in-container">
+        <div className="sign-in-header">
+          <h1>Let's spend some $$</h1>
+          {/* <h4>Where will you go today?</h4> */}
+        </div>
+        <form className='auth-form-sign-in' onSubmit={this.signIn}>
+          <h3>Sign In</h3>
+          <label htmlFor="email">Email</label>
+          <input
+            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,0.2)' }} />}
+            required
+            type="email"
+            name="email"
+            value={email}
+            placeholder="Email"
+            onChange={this.handleChange}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            required
+            name="password"
+            value={password}
+            type="password"
+            placeholder="Password"
+            onChange={this.handleChange}
+          />
+          <button variant="contained" type="sumbit" className="button">Sign In</button>
+        </form>
+      </div>
     )
   }
 }

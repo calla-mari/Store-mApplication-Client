@@ -11,7 +11,10 @@ import ChangePassword from './auth/components/ChangePassword'
 
 import Home from './Home.js'
 import List from './List.js'
-import ItemNew from './ItemNew.js'
+import ItemNew from './grocery/components/showAllItem'
+import AddItem from './grocery/components/addItem'
+import ShowAllItem from './grocery/components/showAllItem'
+import { addItem } from './grocery/api'
 
 class App extends Component {
   constructor () {
@@ -34,7 +37,7 @@ class App extends Component {
     clearTimeout(this.messageTimeout)
 
     this.messageTimeout = setTimeout(() => this.setState({flashMessage: null
-    }), 2000)
+    }), 1500)
   }
 
   render () {
@@ -59,8 +62,13 @@ class App extends Component {
             <ChangePassword flash={this.flash} user={user} />
           )} />
           <Route exact path="/" component={Home} />
-          <Route exact path="/list" component={List} />
-          <Route exact path="/item/new" component={ItemNew} />
+          {/* <Route exact path="/showAllItem" component={ShowAllItem} /> */}
+          <AuthenticatedRoute user={user} exact path='/showAllItem' render={() => (
+            <ShowAllItem flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/item/new' render={() => (
+            <AddItem flash={this.flash} user={user} />
+          )} />
         </main>
       </React.Fragment>
     )

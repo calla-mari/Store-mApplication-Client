@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import { Icon } from 'antd'
 
 import { handleErrors, signUp, signIn } from '../api'
 import messages from '../messages'
 import apiUrl from '../../apiConfig'
+
+
+import './SignUp.scss'
 
 class SignUp extends Component {
   constructor () {
@@ -41,38 +45,49 @@ class SignUp extends Component {
     const { email, password, passwordConfirmation} = this.state
 
     return (
-      <form className='auth-form' onSubmit={this.signUp}>
-        <h3>Sign Up</h3>
+      <div className="sign-up-container">
+        <div className="sign-up-header">
+          <h1>Start organizing your shopping list!</h1>
+          {/* <ul className="list">
+            <li> Explore the 100 highest New England Mountains. </li>
+            <li> Track your peaks.</li>
+            <li> See your progress towards joining the 4,000 footer club.</li>
+          </ul> */}
+        </div>
+        <form className='auth-form-sign-up' onSubmit={this.signUp}>
+          <h3>Sign Up</h3>
 
-        <label htmlFor="email">Email</label>
-        <input
-          required
-          name="email"
-          value={email}
-          type="email"
-          placeholder="Email"
-          onChange={this.handleChange}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          required
-          name="password"
-          value={password}
-          type="password"
-          placeholder="Password"
-          onChange={this.handleChange}
-        />
-        <label htmlFor="passwordConfirmation">Confirm Password</label>
-        <input
-          required
-          name="passwordConfirmation"
-          value={passwordConfirmation}
-          type="password"
-          placeholder="Confirm Password"
-          onChange={this.handleChange}
-        />
-        <button type="submit">Sign Up</button>
-      </form>
+          <label htmlFor="email">Email</label>
+          <input
+            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,0.2)' }} />}
+            required
+            name="email"
+            value={email}
+            type="email"
+            placeholder="Email"
+            onChange={this.handleChange}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            required
+            name="password"
+            value={password}
+            type="password"
+            placeholder="Password"
+            onChange={this.handleChange}
+          />
+          <label htmlFor="passwordConfirmation">Confirm Password</label>
+          <input
+            required
+            name="passwordConfirmation"
+            value={passwordConfirmation}
+            type="password"
+            placeholder="Confirm Password"
+            onChange={this.handleChange}
+          />
+          <button variant="contained" type="sumbit" className="button">Sign Up</button>
+        </form>
+      </div>
     )
   }
 }

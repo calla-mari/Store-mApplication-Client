@@ -1,0 +1,54 @@
+.list {
+    font-size: 18px;
+    text-align: left;
+  }
+  
+  .sign-in-container {
+    display: flex;
+    font-family: 'Quicksand', sans-serif;
+    height: 700px;
+    justify-content: space-between;
+  }
+  
+  .sign-in-header {
+    margin-left: 6%;
+    flex-direction: column;
+    font-weight: 600;
+    display: flex;
+    justify-content: flex-end;
+    height: 200px;
+    margin-top: 0;
+    color: rgb(60, 200, 225);
+    border-radius: 5px;
+  }
+  
+  .auth-form-sign-in {
+    background-color: rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 400px;
+    margin: 5%;
+    max-width: 600px;
+    color: #fefefe;
+    border-radius: 15px;
+    padding: 5%;
+    text-align: left;
+    width: 30%;
+    font-family: 'Quicksand', sans-serif;
+  
+    h3,
+    input {
+      border-radius: 15px;
+      margin-bottom: 5%;
+      padding: 2%;
+      font-family: 'Quicksand', sans-serif;
+    }
+  
+    button {
+      font-family: 'Quicksand', sans-serif;
+      align-self: center;
+      max-width: 200px;
+      background-color: #cccccc;
+    }
+  }

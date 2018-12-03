@@ -8,24 +8,25 @@ class List extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      list: []
+      grocery_lists: []
     }
   }
 
   async componentDidMount() {
-    const response = await axios.get(`${API_BASE_URL}/list`)
-    this.setState({list: response.data.list})
+    const response = await axios.get(`${API_BASE_URL}/grocery_lists`)
+    // this.setState({list: response.data.list})
+    console.log(response)
   }
 
   render() {
     let itemRows
-    const { list } = this.state
+    const { grocery_lists } = this.state
     
-    if (list.length === 0) {
+    if (grocery_lists.length === 0) {
       itemRows = <tr><td>You have no items in you list</td></tr>
     } else {
-      itemRows = list.map(item => {
-        const { id, items, amount} = item
+      itemRows = grocery_lists.map(item => {
+        const { id, items, amount} = grocery_lists
         return (
           <tr key={id}>
             <td>
@@ -33,14 +34,14 @@ class List extends React.Component {
             </td>
           </tr>
         )
-      }
-      )}
+      })
+    }
 
     return(
       <React.Fragment>
         <h1>Let Spend Some $$</h1>
         <Link to='/item/new'>
-          <Button type="primary">Add Another Item</Button>
+          <Button type="primary">Add An Item</Button>
         </Link>
         <table>
           <tbody>
