@@ -6,11 +6,9 @@ import './Home.scss'
 class Home extends React.Component {
   render() {
 
-
-
     return(
       <React.Fragment>
-        <Link to='/showAllItem'>
+        <Link to='/items'>
           <h1>Market Basket</h1>
         </Link>
         <div className="layout">

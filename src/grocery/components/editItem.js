@@ -1,7 +1,8 @@
+/* eslint-disable indent */
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import { handleErrors, addItem } from '../api'
+import { handleErrors, editItem } from '../api'
 import messages from '../messages'
 import apiUrl from '../../apiConfig'
 import { Checkbox } from 'antd'
@@ -19,6 +20,7 @@ class EditItem extends Component {
       }
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event) {
@@ -26,22 +28,38 @@ class EditItem extends Component {
     this.setState({grocery_list: editItem})
   }
 
+  async handleSubmit(event) {
+    event.preventDefault()
+    const grocery_listParams = {grocery_list: this.state.grocery_list}
+    const id = this.props.match.params.id
+    const response = await axios.put(`${API_BASE_URL}/grocery_lists/` + id, grocery_listParams)
+    this.props.history.push('/grocery_lists/' + response.data.movie.id)
+  }
+
+  async componentDidMount () {
+    const id = this.props.match.params.id
+    const response = await axios.get(`${API_BASE_URL}/grocery_lists/` + id)
+    console.log(response)
+    // this.setState({grocery_list: response.data.grocery_list})
+  }
+
+
   // handleChange = event => this.setState({
   //   [event.target.name]: event.target.value
   // })
 
-  editItem = event => {
-    event.preventDefault()
+//   editItem = event => {
+//     event.preventDefault()
 
-    const { grocery_list } = this.state
-    const { flash, history, user } = this.props
+//     const { grocery_list } = this.state
+//     const { flash, history, user } = this.props
 
-    addItem(grocery_list, user)
-      .then(handleErrors)
-      .then(() => flash(messages.editSuccess, 'flash-success'))
-      .then(() => history.push('/'))
-      .catch(() => flash(messages.editFail, 'flash-error'))
-  }
+//     editItem(grocery_list, user)
+//       .then(handleErrors)
+//       .then(() => flash(messages.editSuccess, 'flash-success'))
+//       .then(() => history.push('/'))
+//       .catch(() => flash(messages.editFail, 'flash-error'))
+//   }
 
   render () {
     const { checkbox, item, amount } = this.state.grocery_list

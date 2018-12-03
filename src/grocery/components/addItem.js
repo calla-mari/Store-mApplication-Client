@@ -40,7 +40,7 @@ class AddItem extends Component {
     addItem(grocery_list, user)
       .then(handleErrors)
       .then(() => flash(messages.createSuccess, 'flash-success'))
-      .then(() => history.push('/'))
+      .then(() => history.push('/showAllItem'))
       .catch(() => flash(messages.createFail, 'flash-error'))
   }
 
