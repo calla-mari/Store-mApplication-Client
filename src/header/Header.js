@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from 'antd'
+import Icon from '@material-ui/core/Icon'
 
 import './Header.scss'
 
@@ -9,7 +10,7 @@ const authenticatedOptions = (
     <Link to="/change-password">Change Password</Link>
     <Link to="/sign-out">Sign Out</Link>
     <Link to="/">
-      <Button type="primary" shape="circle" icon="home" />
+      <Icon>home</Icon>
     </Link>
   </React.Fragment>
 )
@@ -28,7 +29,12 @@ const alwaysOptions = (
 
 const Header = ({ user }) => (
   <header className="main-header">
-    <h1>Grocery Store mApp</h1>
+    <Link className="logo-header" to="/">
+      <img
+        src={require('./cart.png')}
+        className='logo' />
+      <h1>Store mApp</h1>
+    </Link>
     <nav>
       { user && <span>Welcome, {user.email}</span>}
       { user ? authenticatedOptions : unauthenticatedOptions }

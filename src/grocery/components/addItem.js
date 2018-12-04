@@ -6,6 +6,7 @@ import messages from '../messages'
 import apiUrl from '../../apiConfig'
 import { Checkbox } from 'antd'
 import { Switch } from 'antd'
+import Icon from '@material-ui/core/Icon'
 
 class AddItem extends Component {
   constructor () {

@@ -10,9 +10,10 @@ import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 
 import Home from './Home.js'
-import List from './List.js'
 import ShowAllItem from './grocery/components/showAllItem'
 import AddItem from './grocery/components/addItem'
+import EditItem from './grocery/components/editItem'
+import Landing from './Landing.js'
 
 class App extends Component {
   constructor () {
@@ -59,15 +60,19 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword flash={this.flash} user={user} />
           )} />
-          <Route exact path="/" component={Home} />
-          {/* <Route exact path="/showAllItem" component={ShowAllItem} /> */}
-          <AuthenticatedRoute user={user} exact path='/items' render={() => (
+          <Route exact path="/Landing" component={Landing} />
+          <AuthenticatedRoute user={user} exact path='/' render={() => (
+            <Home flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/grocery_lists' render={() => (
             <ShowAllItem flash={this.flash} user={user} />
           )} />
-          <AuthenticatedRoute user={user} exact path='/items/new' render={() => (
+          <AuthenticatedRoute user={user} exact path='/grocery_lists/new' render={() => (
             <AddItem flash={this.flash} user={user} />
           )} />
-
+          <AuthenticatedRoute user={user} exact path='/grocery_lists/:id/edit' render={() => (
+            <EditItem flash={this.flash} user={user} />
+          )} />
         </main>
       </React.Fragment>
     )

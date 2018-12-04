@@ -26,6 +26,22 @@ $charcoal: #bbb;
   justify-content: flex-end;
 }
 
+.logo {
+  height: 50px;
+  margin-right: 12px;
+}
+
+.logo-header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+}
+
+.logo-header:hover {
+  text-decoration: none;
+}
+
 @media (max-width: 600px) {
   .main-header {
     flex-direction: column;

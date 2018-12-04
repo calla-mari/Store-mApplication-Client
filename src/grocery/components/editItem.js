@@ -1,70 +1,70 @@
 /* eslint-disable indent */
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
+import axios from 'axios'
+import API_BASE_URL from '../../config/api.js'
 
-import { handleErrors, editItem } from '../api'
+import { handleErrors, onEditItem } from '../api'
 import messages from '../messages'
 import apiUrl from '../../apiConfig'
 import { Checkbox } from 'antd'
 import { Switch } from 'antd'
 
 class EditItem extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
     this.state = {
       grocery_list: {
         checkbox: '',
         item: '',
         amount: ''
-      }
-    }
+      },
+      edited: false
+		}
+		
     this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.editItem = this.editItem.bind(this)
+    // this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event) {
     const editItem = { ...this.state.grocery_list, [event.target.name]: event.target.value }
     this.setState({grocery_list: editItem})
   }
-
-  async handleSubmit(event) {
+  
+  editItem(event) {
     event.preventDefault()
-    const grocery_listParams = {grocery_list: this.state.grocery_list}
-    const id = this.props.match.params.id
-    const response = await axios.put(`${API_BASE_URL}/grocery_lists/` + id, grocery_listParams)
-    this.props.history.push('/grocery_lists/' + response.data.movie.id)
-  }
 
-  async componentDidMount () {
-    const id = this.props.match.params.id
-    const response = await axios.get(`${API_BASE_URL}/grocery_lists/` + id)
-    console.log(response)
-    // this.setState({grocery_list: response.data.grocery_list})
-  }
+    const edited = {
+        checkbox: this.state.grocery_list.checkbox,
+        item: this.state.grocery_list.item,
+        amount: this.state.grocery_list.amount
+      }
 
+    onEditItem(this.props.match.params.id, edited, this.props.user)
 
-  // handleChange = event => this.setState({
-  //   [event.target.name]: event.target.value
-  // })
-
-//   editItem = event => {
-//     event.preventDefault()
-
-//     const { grocery_list } = this.state
-//     const { flash, history, user } = this.props
-
-//     editItem(grocery_list, user)
-//       .then(handleErrors)
-//       .then(() => flash(messages.editSuccess, 'flash-success'))
-//       .then(() => history.push('/'))
-//       .catch(() => flash(messages.editFail, 'flash-error'))
-//   }
+      .then(handleErrors)
+      .then((response)=> {
+        return response.json()
+      })
+      .then((response)=>{
+        return this.setState({grocery_lists: response.grocery_lists})
+      })
+      // .then(() => flash(messages.editSuccess, 'flash-success'))
+      .then(() => {
+        this.setState({ edited: true })
+      })
+      // .catch(() => flash(messages.editFail, 'flash-error'))
+    }
 
   render () {
+    if (this.state.edited === true) {
+      return <Redirect to='/grocery_lists' />
+    }
     const { checkbox, item, amount } = this.state.grocery_list
     return (
-      <form className='create' onSubmit={this.editItem}>
+      <form className='edit' onSubmit={this.editItem}>
         <h3>Update Item</h3>
         <label htmlFor="checkbox"></label>
         {/* <input 
@@ -88,7 +88,8 @@ class EditItem extends Component {
           id="item" 
           name="item" 
           type="text" 
-          value={item} 
+          value={item}
+          placeholder={item} 
           onChange={this.handleChange} 
         />
        
@@ -100,7 +101,7 @@ class EditItem extends Component {
           value={amount} 
           onChange={this.handleChange} 
         />
-        <button type="submit">Add Item</button>
+        <button variant="contained" type="sumbit" className="button">Edit Item</button>
       </form>
     )
   }

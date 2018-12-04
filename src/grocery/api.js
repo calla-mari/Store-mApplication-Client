@@ -25,19 +25,15 @@ export const addItem = (grocery_list, user) => {
   })
 }
 
-export const editItem = (grocery_list, user) => {
-  return fetch(apiUrl + '/grocery_lists', {
+export const onEditItem = (id, grocery_list, user) => {
+  return fetch(apiUrl + `/grocery_lists/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
       'Authorization':`Token token=${user.token}`
     },
     body: JSON.stringify({
-      grocery_list: {
-        checkbox: grocery_list.checkbox,
-        item: grocery_list.item,
-        amount: grocery_list.amount
-      }
+      grocery_list
     })
   })
 }
@@ -52,8 +48,8 @@ export const showAllItem = user => {
   })
 }
 
-export const deleteItem = user => {
-  return fetch(apiUrl + '/grocery_lists', {
+export const onDeleteItem = (id, user) => {
+  return fetch(apiUrl + `/grocery_lists/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',

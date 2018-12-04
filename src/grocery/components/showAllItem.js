@@ -1,28 +1,30 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable indent */
-import React from 'react'
+import React, { Component }  from 'react'
+import { withRouter, Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import API_BASE_URL from '../../config/api.js'
 import { Button } from 'antd'
-import { handleErrors, showAllItem } from '../api'
+import { handleErrors, showAllItem, onDeleteItem } from '../api'
 import messages from '../messages'
+import { Table } from 'antd'
+import Icon from '@material-ui/core/Icon'
+import Chip from '@material-ui/core/Chip'
 
 class ShowAllItem extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      grocery_lists: []
-    }
+			grocery_lists: [],
+			deleted: false
+		}
+		this.deleteItem = this.deleteItem.bind(this)
   }
 
   async componentDidMount() {
-		event.preventDefault()
 
 		const { flash, history, user } = this.props 
-
-		// const response = await axios.get('http://localhost:4741/grocery_lists')
-		// this.setState({grocery_lists: response.grocery_lists})
-		// console.log(response)
 
 		showAllItem(user)
 		.then(handleErrors)
@@ -30,18 +32,25 @@ class ShowAllItem extends React.Component {
 			return response.json()
 		})
 		.then((response)=>{
-			console.log(response)
 			return this.setState({grocery_lists: response.grocery_lists})
 		})
 		.then(() => flash(messages.showSuccess, 'flash-success'))
 		.catch(() => flash(messages.showFail, 'flash-error'))
+	}
+
+	deleteItem = event => {
+    const { user } = this.props
+		const id = event.target.getAttribute('id')
+		console.log(event.target)
+
+		onDeleteItem(id, user)
+			.then(() => {
+				this.componentDidMount()
+			})
+			// .then(() => flash(messages.showSuccess, 'flash-success'))
+			// .catch(() => flash(messages.showFail, 'flash-error'))
   }
 	
-  // async deleteItem(event) {
-  //   const { id } = this.props.match.params
-  //   const response = await axios.delete(`${API_BASE_URL}/grocery_lists/${id}`)
-  //   this.setState({deleted: true})
-  // }
 
   render() {
     let itemRows
@@ -51,10 +60,14 @@ class ShowAllItem extends React.Component {
       itemRows = <tr><td>You have no items in you list</td></tr>
     } else {
       itemRows = grocery_lists.map(grocery_list => {
-        const { id, checkbox, item, amount } = grocery_list
+				const { id, checkbox, item, amount } = grocery_list
+				const link = {
+          pathname: `/grocery_lists/${id}/edit`,
+          grocery_listsParams: [id, checkbox, item, amount]
+        }
         return (
-          <tr key={id}>
-            <td>
+					<tr key={id}>
+						<td>
 							{checkbox}
 						</td>
 						<td>
@@ -63,7 +76,13 @@ class ShowAllItem extends React.Component {
 						<td>
 							{amount}
 						</td>
-          </tr>
+						<td>
+							<Link to={link}>
+								<Icon>edit</Icon>
+							</Link>
+							<Icon onClick={this.deleteItem} id={id}>delete</Icon>
+						</td>
+					</tr>
         )
       })
     }
@@ -71,7 +90,7 @@ class ShowAllItem extends React.Component {
     return(
       <React.Fragment>
         <h1>What do I need to buy?</h1>
-        <Link to='/items/new'>
+        <Link to='/grocery_lists/new' replace >
           <Button type="primary">Add An Item</Button>
         </Link>
         <table>
@@ -80,8 +99,10 @@ class ShowAllItem extends React.Component {
           </tbody>
         </table>
       </React.Fragment>
+			
     )
   }
 }
+
 
 export default ShowAllItem
