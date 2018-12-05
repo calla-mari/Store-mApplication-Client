@@ -60,7 +60,7 @@ const styles = theme => ({
   },
 })
 
-function FullWidthGrid(props) {
+function StoreMap(props) {
   const { classes } = props
 
   return (
@@ -145,8 +145,8 @@ function FullWidthGrid(props) {
   )
 }
 
-FullWidthGrid.propTypes = {
+StoreMap.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(FullWidthGrid)
+export default withStyles(styles)(StoreMap)

@@ -57,22 +57,22 @@ class AddItem extends Component {
     return (
       <form className='create' onSubmit={this.addItem}>
         <h3>Add An Item</h3>
-        <label htmlFor="checkbox">checkbox</label>
         {/* <input 
+        <label htmlFor="checkbox">checkbox</label>
           id="checkbox" 
           name="checkbox" 
           type="boolean" 
           value={checkbox} 
           onChange={this.handleChange} 
         /> */}
-        <Checkbox 
+        {/* <Checkbox 
           id="checkbox" 
           name="checkbox" 
           // options={list} 
           // checked={this.state.active}
           value={checkbox} 
           onClick={this.handleChange} 
-        />
+        /> */}
         <label htmlFor="department">Department</label>
         <input 
           required

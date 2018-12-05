@@ -29,7 +29,7 @@ const alwaysOptions = (
 
 const Header = ({ user }) => (
   <header className="main-header">
-    <Link className="logo-header" to="/">
+    <Link className="logo-header" to="/grocery_lists">
       <img
         src={require('./cart.png')}
         className='logo' />
