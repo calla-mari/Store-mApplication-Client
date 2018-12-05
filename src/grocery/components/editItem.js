@@ -17,6 +17,7 @@ class EditItem extends Component {
     this.state = {
       grocery_list: {
         checkbox: '',
+        department: '',
         item: '',
         amount: ''
       },
@@ -38,6 +39,7 @@ class EditItem extends Component {
 
     const edited = {
         checkbox: this.state.grocery_list.checkbox,
+        department: this.state.grocery_list.department,
         item: this.state.grocery_list.item,
         amount: this.state.grocery_list.amount
       }
@@ -62,25 +64,34 @@ class EditItem extends Component {
     if (this.state.edited === true) {
       return <Redirect to='/grocery_lists' />
     }
-    const { checkbox, item, amount } = this.state.grocery_list
+    const { checkbox, department, item, amount } = this.state.grocery_list
     return (
       <form className='edit' onSubmit={this.editItem}>
         <h3>Update Item</h3>
-        <label htmlFor="checkbox"></label>
         {/* <input 
+        <label htmlFor="checkbox"></label>
           id="checkbox" 
           name="checkbox" 
           type="boolean" 
           value={checkbox} 
           onChange={this.handleChange} 
         /> */}
-        <Checkbox 
+        {/* <Checkbox 
           id="checkbox" 
           name="checkbox" 
           // options={list} 
           // checked={this.state.active}
           value={checkbox} 
           onClick={this.handleChange} 
+        /> */}
+        <label htmlFor="department">Department</label>
+        <input 
+          required
+          id="department" 
+          name="department" 
+          type="text" 
+          value={department}
+          onChange={this.handleChange} 
         />
         <label htmlFor="item">Item</label>
         <input 
