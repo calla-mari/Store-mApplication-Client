@@ -17,6 +17,7 @@ class EditItem extends Component {
     this.state = {
       grocery_list: {
         checkbox: '',
+        department: '',
         item: '',
         amount: ''
       },
@@ -81,6 +82,15 @@ class EditItem extends Component {
           // checked={this.state.active}
           value={checkbox} 
           onClick={this.handleChange} 
+        />
+        <label htmlFor="department">Department</label>
+        <input 
+          required
+          id="department" 
+          name="department" 
+          type="text" 
+          value={department}
+          onChange={this.handleChange} 
         />
         <label htmlFor="item">Item</label>
         <input 

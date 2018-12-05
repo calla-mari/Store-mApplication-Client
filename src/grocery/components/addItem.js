@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 
 import { handleErrors, addItem } from '../api'
 import messages from '../messages'
@@ -15,9 +15,11 @@ class AddItem extends Component {
     this.state = {
       grocery_list: {
         checkbox: '',
+        department: '',
         item: '',
         amount: ''
-      }
+      },
+      new: false
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -41,12 +43,17 @@ class AddItem extends Component {
     addItem(grocery_list, user)
       .then(handleErrors)
       .then(() => flash(messages.createSuccess, 'flash-success'))
-      .then(() => history.push('/showAllItem'))
+      .then(() => {
+        this.setState({ new: true })
+      })
       .catch(() => flash(messages.createFail, 'flash-error'))
   }
 
   render () {
-    const { checkbox, item, amount } = this.state.grocery_list
+    if (this.state.new === true) {
+      return <Redirect to='/grocery_lists' />
+    }
+    const { checkbox, department, item, amount } = this.state.grocery_list
     return (
       <form className='create' onSubmit={this.addItem}>
         <h3>Add An Item</h3>
@@ -65,6 +72,15 @@ class AddItem extends Component {
           // checked={this.state.active}
           value={checkbox} 
           onClick={this.handleChange} 
+        />
+        <label htmlFor="department">Department</label>
+        <input 
+          required
+          id="department" 
+          name="department" 
+          type="text" 
+          value={department} 
+          onChange={this.handleChange} 
         />
         <label htmlFor="item">Item</label>
         <input 

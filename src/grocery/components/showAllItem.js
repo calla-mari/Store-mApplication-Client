@@ -60,7 +60,7 @@ class ShowAllItem extends React.Component {
       itemRows = <tr><td>You have no items in you list</td></tr>
     } else {
       itemRows = grocery_lists.map(grocery_list => {
-				const { id, checkbox, item, amount } = grocery_list
+				const { id, checkbox, department, item, amount } = grocery_list
 				const link = {
           pathname: `/grocery_lists/${id}/edit`,
           grocery_listsParams: [id, checkbox, item, amount]
@@ -69,6 +69,9 @@ class ShowAllItem extends React.Component {
 					<tr key={id}>
 						<td>
 							{checkbox}
+						</td>
+						<td>
+							{department}
 						</td>
 						<td>
 							{item}

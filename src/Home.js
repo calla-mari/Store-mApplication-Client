@@ -11,15 +11,32 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Icon from '@material-ui/core/Icon'
+import GridList from '@material-ui/core/GridList'
+import GridListTile from '@material-ui/core/GridListTile'
+import GridListTileBar from '@material-ui/core/GridListTileBar'
+import ListSubheader from '@material-ui/core/ListSubheader'
+import IconButton from '@material-ui/core/IconButton'
+// import InfoIcon from '@material-ui/icons/Info'
+// import tileData from './tileData'
+
 
 import './Home.scss'
 
 const styles = {
   card: {
     maxWidth: 345,
+    minWidth: 200,
+    borderRadius: 10,
+    margin: 20,
   },
   media: {
     height: 140,
+  },
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
   },
 }
 
@@ -27,43 +44,57 @@ class Home extends React.Component {
   render() {
     const { classes } = this.props
     return (
-      <div>
-        <div className={classes.cardDiv}>
-          <Card className={classes.card}>
-            <CardActionArea>
-              <Link to='/grocery_lists' replace >
-                <CardMedia
-                  className={classes.media}
-                  image='https://i.imgur.com/4MmHhtO.jpg'
-                  title="MB"
-                />
-              </Link>
-            </CardActionArea>
-            <CardActions style={{justifyContent: 'center'}}>
-              <Link to='/grocery_lists/new' replace >
-                <Icon>edit</Icon>
-              </Link>
-            </CardActions>
-          </Card>
-        </div>
-        <div>
-          <Card className={classes.card}>
-            <CardActionArea>
-              <Link to='/grocery_lists' replace >
-                <CardMedia
-                  className={classes.media}
-                  image='https://i.imgur.com/Oibd8or.jpg'
-                  title="MB"
-                />
-              </Link>
-            </CardActionArea>
-            <CardActions style={{justifyContent: 'center'}}>
-              <Link to='/grocery_lists/new' replace >
-                <Icon>edit</Icon>
-              </Link>
-            </CardActions>
-          </Card>
-        </div>
+      <div className={classes.root}>
+        <Card className={classes.card}>
+          <CardActionArea>
+            <Link to='/Map' replace >
+              <CardMedia
+                className={classes.media}
+                image='https://i.imgur.com/4MmHhtO.jpg'
+                title="MB"
+              />
+            </Link>
+          </CardActionArea>
+          <CardActions style={{justifyContent: 'center'}}>
+            <Link to='/grocery_lists/new' replace >
+              <Icon>edit</Icon>
+            </Link>
+          </CardActions>
+        </Card>
+      
+        <Card className={classes.card}>
+          <CardActionArea>
+            <Link to='/Map' replace >
+              <CardMedia
+                className={classes.media}
+                image='https://i.imgur.com/Oibd8or.jpg'
+                title="MB"
+              />
+            </Link>
+          </CardActionArea>
+          <CardActions style={{justifyContent: 'center'}}>
+            <Link to='/grocery_lists/new' replace >
+              <Icon>edit</Icon>
+            </Link>
+          </CardActions>
+        </Card>
+
+        <Card className={classes.card}>
+          <CardActionArea>
+            <Link to='/Map' replace >
+              <CardMedia
+                className={classes.media}
+                image='https://i.imgur.com/Oibd8or.jpg'
+                title="MB"
+              />
+            </Link>
+          </CardActionArea>
+          <CardActions style={{justifyContent: 'center'}}>
+            <Link to='/grocery_lists/new' replace >
+              <Icon>edit</Icon>
+            </Link>
+          </CardActions>
+        </Card>
       </div>
 
     // return(

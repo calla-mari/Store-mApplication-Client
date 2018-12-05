@@ -14,6 +14,8 @@ import ShowAllItem from './grocery/components/showAllItem'
 import AddItem from './grocery/components/addItem'
 import EditItem from './grocery/components/editItem'
 import Landing from './Landing.js'
+import Map from './Map.js'
+import Card from './Card.js'
 
 class App extends Component {
   constructor () {
@@ -72,6 +74,12 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/grocery_lists/:id/edit' render={() => (
             <EditItem flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/Map' render={() => (
+            <Map flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/Card' render={() => (
+            <Card flash={this.flash} user={user} />
           )} />
         </main>
       </React.Fragment>

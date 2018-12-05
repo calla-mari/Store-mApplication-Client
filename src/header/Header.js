@@ -33,6 +33,8 @@ const Header = ({ user }) => (
       <img
         src={require('./cart.png')}
         className='logo' />
+    </Link>
+    <Link className="logo-header" to="/Map">
       <h1>Store mApp</h1>
     </Link>
     <nav>
