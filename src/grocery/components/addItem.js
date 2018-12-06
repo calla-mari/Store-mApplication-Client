@@ -9,12 +9,12 @@ import Icon from '@material-ui/core/Icon'
 import './form.scss'
 
 class AddItem extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {
       grocery_list: {
         checkbox: '',
-        department:'',
+        department: this.props.department,
         item: '',
         amount: ''
       },
@@ -72,7 +72,7 @@ class AddItem extends Component {
           value={checkbox} 
           onClick={this.handleChange} 
         /> */}
-        {/* <label htmlFor="department">Department</label>
+        <label htmlFor="department">Department</label>
         <input 
           required
           id="department" 
@@ -80,7 +80,7 @@ class AddItem extends Component {
           type="text" 
           value={department} 
           onChange={this.handleChange} 
-        /> */}
+        />
         <label htmlFor="item">Item</label>
         <input 
           required

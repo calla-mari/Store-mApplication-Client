@@ -75,7 +75,7 @@ class App extends Component {
             <ShowAllItem flash={this.flash} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/grocery_lists/new' render={() => (
-            <AddItem flash={this.flash} user={user} />
+            <AddItem flash={this.flash} user={user} department={this.state.department}/>
           )} />
           <AuthenticatedRoute user={user} exact path='/grocery_lists/:id/edit' render={() => (
             <EditItem flash={this.flash} user={user} />
