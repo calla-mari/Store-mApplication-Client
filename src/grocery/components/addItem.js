@@ -4,9 +4,9 @@ import { withRouter, Redirect } from 'react-router-dom'
 import { handleErrors, addItem } from '../api'
 import messages from '../messages'
 import apiUrl from '../../apiConfig'
-import { Checkbox } from 'antd'
-import { Switch } from 'antd'
 import Icon from '@material-ui/core/Icon'
+
+import './form.scss'
 
 class AddItem extends Component {
   constructor () {
@@ -55,7 +55,7 @@ class AddItem extends Component {
     }
     const { checkbox, department, item, amount } = this.state.grocery_list
     return (
-      <form className='create' onSubmit={this.addItem}>
+      <form className='userForm' onSubmit={this.addItem}>
         <h3>Add An Item</h3>
         {/* <input 
         <label htmlFor="checkbox">checkbox</label>
@@ -73,7 +73,7 @@ class AddItem extends Component {
           value={checkbox} 
           onClick={this.handleChange} 
         /> */}
-        <label htmlFor="department">Department</label>
+        {/* <label htmlFor="department">Department</label>
         <input 
           required
           id="department" 
@@ -81,7 +81,7 @@ class AddItem extends Component {
           type="text" 
           value={department} 
           onChange={this.handleChange} 
-        />
+        /> */}
         <label htmlFor="item">Item</label>
         <input 
           required

@@ -3,9 +3,7 @@
 import React, { Component }  from 'react'
 import { withRouter, Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 import API_BASE_URL from '../../config/api.js'
-import { Button } from 'antd'
 import { handleErrors, showAllItem, onDeleteItem } from '../api'
 import messages from '../messages'
 import Icon from '@material-ui/core/Icon'
@@ -17,6 +15,8 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import Checkbox from '@material-ui/core/Checkbox'
+// import AddIcon from '@material-ui/icons/Add'
+import Fab from '@material-ui/core/Fab'
 
 class ShowAllItem extends React.Component {
 	constructor(props) {
@@ -61,12 +61,13 @@ class ShowAllItem extends React.Component {
   render() {
 		let itemRows
 		const { grocery_lists } = this.state
+		console.log(grocery_lists)
     
     if (grocery_lists.length === 0) {
 			itemRows = <tr><td>You have no items in you list</td></tr>
     } else {
-			itemRows = grocery_lists.map(grocery_list => {
-				const { id, checkbox, department, item, amount } = grocery_list
+			itemRows = grocery_lists.map(product => {
+				const { id, checkbox, department, item, amount } = product
 				const link = {
 					pathname: `/grocery_lists/${id}/edit`,
           grocery_listsParams: [id, checkbox, department, item, amount]
@@ -75,7 +76,7 @@ class ShowAllItem extends React.Component {
 				
 					<TableRow className="itemTable" key={id}>
 						<TableCell padding="checkbox">
-							<Checkbox />
+							<Checkbox checked={checkbox} />
 						</TableCell>
 						<TableCell>
 							{department}
@@ -107,14 +108,23 @@ class ShowAllItem extends React.Component {
 			table: {
 				minWidth: 700,
 			},
+			fab: {
+				color: 'rgb(60, 200, 225)',
+				background: 'rgb(60, 200, 225)',
+				marginLeft: 40,
+			}
 		})
 		
     return(
 				<div>
-					<h1>What do I need to buy?</h1>
-					<Link to='/grocery_lists/new' replace >
-						<Button type="primary">Add An Item</Button>
-					</Link>
+					<h1>What do I need to buy?
+						<Link to='/grocery_lists/new' replace >
+							<Fab aria-label="Add" className="fab">
+								{/* <AddIcon /> */}
+								<Icon>add_circle</Icon>
+							</Fab>
+						</Link>
+					</h1>
 					<Paper>
 						<Table>
 							<TableHead>

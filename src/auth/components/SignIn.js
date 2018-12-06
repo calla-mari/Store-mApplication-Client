@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { Row, Col, Icon } from 'antd'
 import { signIn } from '../api'
 import messages from '../messages'
 import apiUrl from '../../apiConfig'
@@ -50,7 +49,6 @@ class SignIn extends Component {
           <h3>Sign In</h3>
           <label htmlFor="email">Email</label>
           <input
-            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,0.2)' }} />}
             required
             type="email"
             name="email"

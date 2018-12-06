@@ -1,25 +1,25 @@
 /* eslint-disable indent */
 import React, { Component } from 'react'
 import { withRouter, Redirect } from 'react-router-dom'
-import axios from 'axios'
 import API_BASE_URL from '../../config/api.js'
 
 import { handleErrors, onEditItem } from '../api'
 import messages from '../messages'
 import apiUrl from '../../apiConfig'
-import { Checkbox } from 'antd'
-import { Switch } from 'antd'
+
+import './form.scss'
 
 class EditItem extends Component {
   constructor (props) {
     super(props)
+    const initialData = props.location.grocery_listsParams
 
     this.state = {
       grocery_list: {
-        checkbox: '',
-        department: '',
-        item: '',
-        amount: ''
+        checkbox: initialData[1] ? true : false,
+        department: initialData[2],
+        item: initialData[3],
+        amount: initialData[4]
       },
       edited: false
 		}
@@ -33,19 +33,24 @@ class EditItem extends Component {
     const editItem = { ...this.state.grocery_list, [event.target.name]: event.target.value }
     this.setState({grocery_list: editItem})
   }
+
+  toggleCheckbox = () => {
+    const isChecked = this.state.grocery_list.checkbox
+    const editItem = { ...this.state.grocery_list, checkbox: !isChecked }
+    this.setState({grocery_list: editItem})
+  }
   
   editItem(event) {
     event.preventDefault()
 
     const edited = {
-        checkbox: this.state.grocery_list.checkbox,
-        department: this.state.grocery_list.department,
-        item: this.state.grocery_list.item,
-        amount: this.state.grocery_list.amount
-      }
+      checkbox: this.state.grocery_list.checkbox,
+      department: this.state.grocery_list.department,
+      item: this.state.grocery_list.item,
+      amount: this.state.grocery_list.amount
+    }
 
     onEditItem(this.props.match.params.id, edited, this.props.user)
-
       .then(handleErrors)
       .then((response)=> {
         return response.json()
@@ -58,31 +63,25 @@ class EditItem extends Component {
         this.setState({ edited: true })
       })
       // .catch(() => flash(messages.editFail, 'flash-error'))
-    }
+  }
 
   render () {
     if (this.state.edited === true) {
       return <Redirect to='/grocery_lists' />
     }
+    console.log(this.state.grocery_list)
     const { checkbox, department, item, amount } = this.state.grocery_list
     return (
-      <form className='edit' onSubmit={this.editItem}>
+      <form className='userForm' onSubmit={this.editItem}>
         <h3>Update Item</h3>
-        {/* <input 
-        <label htmlFor="checkbox"></label>
+        {/* <label htmlFor="checkbox">Active</label>
+        <input 
           id="checkbox" 
           name="checkbox" 
-          type="boolean" 
-          value={checkbox} 
-          onChange={this.handleChange} 
-        /> */}
-        {/* <Checkbox 
-          id="checkbox" 
-          name="checkbox" 
+          type="checkbox"
           // options={list} 
-          // checked={this.state.active}
           value={checkbox} 
-          onClick={this.handleChange} 
+          onChange={this.toggleCheckbox} 
         /> */}
         <label htmlFor="department">Department</label>
         <input 

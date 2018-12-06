@@ -24,11 +24,15 @@ class App extends Component {
     this.state = {
       user: null,
       flashMessage: '',
-      flashType: null
+      flashType: null,
+      store: '',
+      department: ''
     }
   }
 
   setUser = user => this.setState({ user })
+  setStore = store => this.setState({ store })
+  setDepartment = department => this.setState({ department })
 
   clearUser = () => this.setState({ user: null })
 
@@ -43,6 +47,7 @@ class App extends Component {
 
   render () {
     const { flashMessage, flashType, user } = this.state
+    console.log(this.state)
 
     return (
       <React.Fragment>
@@ -76,7 +81,7 @@ class App extends Component {
             <EditItem flash={this.flash} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/Map' render={() => (
-            <Map flash={this.flash} user={user} />
+            <Map flash={this.flash} user={user} updateStore={this.setStore} updateDept={this.setDepartment} />
           )} />
           <AuthenticatedRoute user={user} exact path='/Card' render={() => (
             <Card flash={this.flash} user={user} />

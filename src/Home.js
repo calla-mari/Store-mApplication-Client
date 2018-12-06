@@ -56,8 +56,11 @@ class Home extends React.Component {
             </Link>
           </CardActionArea>
           <CardActions style={{justifyContent: 'center'}}>
+            <Link to='/grocery_lists/' replace >
+              <Icon>list</Icon>
+            </Link>
             <Link to='/grocery_lists/new' replace >
-              <Icon>edit</Icon>
+              <Icon>add</Icon>
             </Link>
           </CardActions>
         </Card>
@@ -68,13 +71,16 @@ class Home extends React.Component {
               <CardMedia
                 className={classes.media}
                 image='https://i.imgur.com/Oibd8or.jpg'
-                title="MB"
+                title="WF"
               />
             </Link>
           </CardActionArea>
           <CardActions style={{justifyContent: 'center'}}>
+            <Link to='/grocery_lists/' replace >
+              <Icon>list</Icon>
+            </Link>
             <Link to='/grocery_lists/new' replace >
-              <Icon>edit</Icon>
+              <Icon>add</Icon>
             </Link>
           </CardActions>
         </Card>
@@ -84,14 +90,17 @@ class Home extends React.Component {
             <Link to='/Map' replace >
               <CardMedia
                 className={classes.media}
-                image='https://i.imgur.com/Oibd8or.jpg'
-                title="MB"
+                image='https://s3.amazonaws.com/s3.wodsfm.radio.com/styles/delta__775x515/s3/Star.jpg?itok=YeZtXDbB'
+                title="Star"
               />
             </Link>
           </CardActionArea>
           <CardActions style={{justifyContent: 'center'}}>
+            <Link to='/grocery_lists/' replace >
+              <Icon>list</Icon>
+            </Link>
             <Link to='/grocery_lists/new' replace >
-              <Icon>edit</Icon>
+              <Icon>add</Icon>
             </Link>
           </CardActions>
         </Card>

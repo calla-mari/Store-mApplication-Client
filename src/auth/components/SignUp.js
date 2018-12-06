@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { Icon } from 'antd'
 
 import { handleErrors, signUp, signIn } from '../api'
 import messages from '../messages'
@@ -59,7 +58,6 @@ class SignUp extends Component {
 
           <label htmlFor="email">Email</label>
           <input
-            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,0.2)' }} />}
             required
             name="email"
             value={email}
