@@ -18,6 +18,8 @@ import Checkbox from '@material-ui/core/Checkbox'
 // import AddIcon from '@material-ui/icons/Add'
 import Fab from '@material-ui/core/Fab'
 
+import './showAll.scss'
+
 class ShowAllItem extends React.Component {
 	constructor(props) {
 		super(props)
@@ -118,7 +120,7 @@ class ShowAllItem extends React.Component {
     return(
 				<div>
 					<h1>What do I need to buy?
-						<Link to='/grocery_lists/new' replace >
+						<Link color='rgb(60, 200, 225)' to='/grocery_lists/new' replace >
 							<Fab aria-label="Add" className="fab">
 								{/* <AddIcon /> */}
 								<Icon>add_circle</Icon>

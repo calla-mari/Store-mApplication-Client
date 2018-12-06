@@ -11,11 +11,10 @@ import './form.scss'
 class AddItem extends Component {
   constructor () {
     super()
-
     this.state = {
       grocery_list: {
         checkbox: '',
-        department: '',
+        department:'',
         item: '',
         amount: ''
       },

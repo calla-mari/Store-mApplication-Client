@@ -10,6 +10,7 @@ import CardActions from '@material-ui/core/CardActions'
 import CardMedia from '@material-ui/core/CardMedia'
 import ItemsList from './grocery/components/showAllItem'
 import Stores from './Home'
+import addModal from './grocery/components/addItemModal'
 
 const styles = theme => ({
   container: {
