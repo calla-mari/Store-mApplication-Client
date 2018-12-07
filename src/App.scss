@@ -1,4 +1,4 @@
-$success: #c7f282;
+$success: #64f7c6;
 $warning: #f1e681;
 $error: #f08181;
 $charcoal: #ccc;
@@ -9,11 +9,11 @@ $charcoal: #ccc;
   border: 1px solid $charcoal;
   display: block;
   left: 25%;
-  padding: 30px;
+  padding: 10px;
   position: fixed;
   text-align: center;
-  top: 15%;
-  width: 50%;
+  top: 5%;
+  width: 20%;
   z-index: 1;
 }
 
@@ -34,7 +34,7 @@ $charcoal: #ccc;
   flex-direction: column;
   justify-content: center;
   margin: 15% auto 0;
-  max-width: 600px;
+  max-width: 400px;
 
   h3,
   input {

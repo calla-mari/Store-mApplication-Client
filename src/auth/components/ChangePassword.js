@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom'
 import { handleErrors, changePassword } from '../api'
 import messages from '../messages'
 import apiUrl from '../../apiConfig'
+import Button from '@material-ui/core/Button'
+
 import './ChangePassword.scss'
 
 class ChangePassword extends Component {
@@ -29,7 +31,7 @@ class ChangePassword extends Component {
     changePassword(this.state, user)
       .then(handleErrors)
       .then(() => flash(messages.changePasswordSuccess, 'flash-success'))
-      .then(() => history.push('/'))
+      .then(() => history.push('/Store'))
       .catch(() => flash(messages.changePasswordFailure, 'flash-error'))
   }
 
@@ -58,7 +60,7 @@ class ChangePassword extends Component {
           placeholder="New Password"
           onChange={this.handleChange}
         />
-        <button variant="contained" type="sumbit" className="button">Change Password</button>
+        <Button variant="contained" type="sumbit" className="button">Change Password</Button>
       </form>
     )
   }

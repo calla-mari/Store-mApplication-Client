@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { handleErrors, signUp, signIn } from '../api'
 import messages from '../messages'
 import apiUrl from '../../apiConfig'
+import Button from '@material-ui/core/Button'
 
 
 import './SignUp.scss'
@@ -36,7 +37,7 @@ class SignUp extends Component {
       .then(res => res.json())
       .then(res => setUser(res.user))
       .then(() => flash(messages.signUpSuccess, 'flash-success'))
-      .then(() => history.push('/'))
+      .then(() => history.push('/Store'))
       .catch(() => flash(messages.signUpFailure, 'flash-error'))
   }
 
@@ -47,11 +48,10 @@ class SignUp extends Component {
       <div className="sign-up-container">
         <div className="sign-up-header">
           <h1>Start organizing your shopping list!</h1>
-          {/* <ul className="list">
-            <li> Explore the 100 highest New England Mountains. </li>
-            <li> Track your peaks.</li>
-            <li> See your progress towards joining the 4,000 footer club.</li>
-          </ul> */}
+          <ul className="list">
+            <li> Create a shopping list that automatically organizes based on store layouts </li>
+            <li> Check items when you run out, uncheck when you purchase.</li>
+          </ul>
         </div>
         <form className='auth-form-sign-up' onSubmit={this.signUp}>
           <h3>Sign Up</h3>
@@ -83,7 +83,7 @@ class SignUp extends Component {
             placeholder="Confirm Password"
             onChange={this.handleChange}
           />
-          <button variant="contained" type="sumbit" className="button">Sign Up</button>
+          <Button variant="contained" type="sumbit" className="button">Sign Up</Button>
         </form>
       </div>
     )

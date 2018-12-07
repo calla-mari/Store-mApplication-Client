@@ -13,8 +13,13 @@ import Home from './Home.js'
 import ShowAllItem from './grocery/components/showAllItem'
 import AddItem from './grocery/components/addItem'
 import EditItem from './grocery/components/editItem'
-import Landing from './Landing.js'
-import Map from './Map.js'
+import Store from './Store.js'
+import MapMB from './MapMB.js'
+import MapWF from './MapWF.js'
+import MapStar from './MapStar.js'
+import MapCostco from './MapCostco.js'
+import MapTarget from './MapTarget.js'
+import MapWalmart from './MapWalmart.js'
 import Card from './Card.js'
 
 class App extends Component {
@@ -61,27 +66,44 @@ class App extends Component {
           <Route path='/sign-in' render={() => (
             <SignIn flash={this.flash} setUser={this.setUser} />
           )} />
+          <Route user={user} exact path='/' render={() => (
+            <Home flash={this.flash} user={user} />
+          )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut flash={this.flash} clearUser={this.clearUser} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword flash={this.flash} user={user} />
           )} />
-          <Route exact path="/Landing" component={Landing} />
-          <AuthenticatedRoute user={user} exact path='/' render={() => (
-            <Home flash={this.flash} user={user} />
-          )} />
           <AuthenticatedRoute user={user} exact path='/grocery_lists' render={() => (
             <ShowAllItem flash={this.flash} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/grocery_lists/new' render={() => (
-            <AddItem flash={this.flash} user={user} department={this.state.department}/>
+            <AddItem flash={this.flash} user={user} department={this.state.department} store={this.state.store}/>
           )} />
           <AuthenticatedRoute user={user} exact path='/grocery_lists/:id/edit' render={() => (
             <EditItem flash={this.flash} user={user} />
           )} />
-          <AuthenticatedRoute user={user} exact path='/Map' render={() => (
-            <Map flash={this.flash} user={user} updateStore={this.setStore} updateDept={this.setDepartment} />
+          <AuthenticatedRoute user={user} exact path='/Store' render={() => (
+            <Store flash={this.flash} user={user} updateStore={this.setStore} updateDept={this.setDepartment} store={this.state.store} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/MapMB' render={() => (
+            <MapMB flash={this.flash} user={user} updateStore={this.setStore} updateDept={this.setDepartment} store={this.state.store} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/MapWF' render={() => (
+            <MapWF flash={this.flash} user={user} updateStore={this.setStore} updateDept={this.setDepartment} store={this.state.store} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/MapStar' render={() => (
+            <MapStar flash={this.flash} user={user} updateStore={this.setStore} updateDept={this.setDepartment} store={this.state.store} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/MapCostco' render={() => (
+            <MapCostco flash={this.flash} user={user} updateStore={this.setStore} updateDept={this.setDepartment} store={this.state.store} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/MapTarget' render={() => (
+            <MapTarget flash={this.flash} user={user} updateStore={this.setStore} updateDept={this.setDepartment} store={this.state.store} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/MapWalmart' render={() => (
+            <MapWalmart flash={this.flash} user={user} updateStore={this.setStore} updateDept={this.setDepartment} store={this.state.store} />
           )} />
           <AuthenticatedRoute user={user} exact path='/Card' render={() => (
             <Card flash={this.flash} user={user} />

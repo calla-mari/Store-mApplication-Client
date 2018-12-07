@@ -5,6 +5,7 @@ import { handleErrors, addItem } from '../api'
 import messages from '../messages'
 import apiUrl from '../../apiConfig'
 import Icon from '@material-ui/core/Icon'
+import Button from '@material-ui/core/Button'
 
 import './form.scss'
 
@@ -13,7 +14,8 @@ class AddItem extends Component {
     super(props)
     this.state = {
       grocery_list: {
-        checkbox: '',
+        store: this.props.store,
+        // checkbox: '',
         department: this.props.department,
         item: '',
         amount: ''
@@ -52,7 +54,7 @@ class AddItem extends Component {
     if (this.state.new === true) {
       return <Redirect to='/grocery_lists' />
     }
-    const { checkbox, department, item, amount } = this.state.grocery_list
+    const { store, checkbox, department, item, amount } = this.state.grocery_list
     return (
       <form className='userForm' onSubmit={this.addItem}>
         <h3>Add An Item</h3>
@@ -72,7 +74,7 @@ class AddItem extends Component {
           value={checkbox} 
           onClick={this.handleChange} 
         /> */}
-        <label htmlFor="department">Department</label>
+        {/* <label htmlFor="department">Department</label>
         <input 
           required
           id="department" 
@@ -80,7 +82,7 @@ class AddItem extends Component {
           type="text" 
           value={department} 
           onChange={this.handleChange} 
-        />
+        /> */}
         <label htmlFor="item">Item</label>
         <input 
           required
@@ -99,7 +101,7 @@ class AddItem extends Component {
           value={amount} 
           onChange={this.handleChange} 
         />
-        <button type="submit">Add Item</button>
+        <Button type="submit">Add Item</Button>
       </form>
     )
   }

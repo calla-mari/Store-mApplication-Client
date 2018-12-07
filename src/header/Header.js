@@ -8,7 +8,7 @@ const authenticatedOptions = (
   <React.Fragment>
     <Link to="/change-password">Change Password</Link>
     <Link to="/sign-out">Sign Out</Link>
-    <Link to="/">
+    <Link to="/Store">
       <Icon>home</Icon>
     </Link>
   </React.Fragment>
@@ -23,6 +23,7 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
   <React.Fragment>
+
   </React.Fragment>
 )
 
@@ -33,7 +34,7 @@ const Header = ({ user }) => (
         src={require('./cart.png')}
         className='logo' />
     </Link>
-    <Link className="logo-header" to="/Map">
+    <Link className="logo-header" to="/Store">
       <h1>Store mApp</h1>
     </Link>
     <nav>

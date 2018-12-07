@@ -1,4 +1,4 @@
-.body {
+body {
   margin: 0;
   flex-direction: column;
   padding: 0;
@@ -8,43 +8,28 @@
   justify-content: center;
 }
 
-.container {
-  padding: 20px;
-  display: flex;
-  min-width: 200px;
-  flex-wrap: wrap;
-  flex-direction: row;
-  flex-grow: 1;
-  justify-content: center;
-  margin: auto;
+.shoppingImg {
+  // background-image: url("./background.png");
+  background-size: cover;
+  max-width: 300;
 }
 
-.card-actions {
-  text-align: center;
+.heading {
+  font-family: 'Quicksand', sans-serif;
+  display: block;
+  padding: 30px;
+  position: fixed;
+  left: 5%;
+  top: 10%;
+  text-align: left;
+
+  h1 {
+    color: rgb(60, 200, 225);
+    font-size: 3.5rem;
+    font-weight: 600;
+  }
+  h3 {
+    color: rgb(60, 200, 225);
+    font-size: 2rem;
+  }
 }
-
-.see-more {
-  margin-left: auto;
-  padding-bottom: 15px;
-  align-self: flex-end;
-}
-
-.MuiCardContent-root-71 {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-.card-media {
-  height: 200px;
-  width: 100%;
-}
-
-.cardDiv{
-  max-width: 345px;
-  min-width: 200px;
-  border-radius: 10px;
-  border-radius: 10px;
-  margin: 10px;
-}
-
-

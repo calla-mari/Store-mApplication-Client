@@ -36,6 +36,7 @@ class AddModal extends React.Component {
 
     this.state = {
       grocery_list: {
+        store: '',
         checkbox: '',
         department: '',
         item: '',
@@ -85,7 +86,7 @@ class AddModal extends React.Component {
 
   render() {
     const { classes } = this.props
-    const { checkbox, department, item, amount } = this.state.grocery_list
+    const { store, checkbox, department, item, amount } = this.state.grocery_list
 
     return (
       <div>

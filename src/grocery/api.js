@@ -17,7 +17,8 @@ export const addItem = (grocery_list, user) => {
     },
     body: JSON.stringify({
       grocery_list: {
-        checkbox: grocery_list.checkbox,
+        store: grocery_list.store,
+        // checkbox: grocery_list.checkbox,
         department: grocery_list.department,
         item: grocery_list.item,
         amount: grocery_list.amount

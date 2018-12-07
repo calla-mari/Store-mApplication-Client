@@ -15,7 +15,7 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import Checkbox from '@material-ui/core/Checkbox'
-// import AddIcon from '@material-ui/icons/Add'
+import AddIcon from '@material-ui/icons/Add'
 import Fab from '@material-ui/core/Fab'
 
 import './showAll.scss'
@@ -69,10 +69,10 @@ class ShowAllItem extends React.Component {
 			itemRows = <tr><td>You have no items in you list</td></tr>
     } else {
 			itemRows = grocery_lists.map(product => {
-				const { id, checkbox, department, item, amount } = product
+				const { id, store, checkbox, department, item, amount } = product
 				const link = {
 					pathname: `/grocery_lists/${id}/edit`,
-          grocery_listsParams: [id, checkbox, department, item, amount]
+          grocery_listsParams: [id, store, checkbox, department, item, amount]
         }
         return (
 				
@@ -119,11 +119,11 @@ class ShowAllItem extends React.Component {
 		
     return(
 				<div>
-					<h1>What do I need to buy?
-						<Link color='rgb(60, 200, 225)' to='/grocery_lists/new' replace >
-							<Fab aria-label="Add" className="fab">
-								{/* <AddIcon /> */}
-								<Icon>add_circle</Icon>
+					<h1 style={{textAlign: 'center'}}>What do I need to buy?
+						<Link to='/grocery_lists/new' replace >
+							<Fab color='primary' aria-label="Add" className="fab">
+								<AddIcon />
+								{/* <Icon>add_circle</Icon> */}
 							</Fab>
 						</Link>
 					</h1>
