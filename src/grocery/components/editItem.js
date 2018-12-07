@@ -61,11 +61,11 @@ class EditItem extends Component {
       .then((response)=>{
         return this.setState({grocery_lists: response.grocery_lists})
       })
-      // .then(() => flash(messages.editSuccess, 'flash-success'))
+      .then(() => flash(messages.editSuccess, 'flash-success'))
       .then(() => {
         this.setState({ edited: true })
       })
-      // .catch(() => flash(messages.editFail, 'flash-error'))
+      .catch(() => flash(messages.editFail, 'flash-error'))
   }
 
   render () {

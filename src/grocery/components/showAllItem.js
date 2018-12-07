@@ -62,8 +62,8 @@ class ShowAllItem extends React.Component {
 		.then(() => {
 			this.componentDidMount()
 		})
-		// .then(() => flash(messages.showSuccess, 'flash-success'))
-		// .catch(() => flash(messages.showFail, 'flash-error'))
+		.then(() => flash(messages.showSuccess, 'flash-success'))
+		.catch(() => flash(messages.showFail, 'flash-error'))
   }
 	
 	
