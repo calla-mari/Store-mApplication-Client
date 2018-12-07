@@ -1,97 +1,100 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+[![Store mApp](https://i.imgur.com/mPywnJL.png)](https://calla-mari.github.io/grocery-store-client/)
 
-# react-auth-template
+# Store mApp
 
-A front-end framework template for starting projects with a recent version of
-either the [Rails API Template](https://git.generalassemb.ly/ga-wdi-boston/rails-api-template)
-or the [Express API Template](https://git.generalassemb.ly/ga-wdi-boston/express-api-template).
+## Description
 
-## Installation
+This application allows users to upload create a shopping list at multiple stores.  Each shopping list will get automatically rearrange to reflect the layout of the stores for a more streamline shopping experience.
 
-1. [Download](../../archive/master.zip) this template.
-1. Unzip and rename the template directory (`unzip ~/Downloads/ember-auth-template-master.zip`).
-1. Move into the new project and `git init`.
-1. Empty [`README.md`](README.md) and fill with your own content.
-1. Replace `ga-wdi-boston.react-auth-template` in `package.json` with your
-   projects name.
-1. Replace the `"homepage"` field in `package.json` with your (public) Github
-   account name and repository name.
-1. Install dependencies with `npm install`.
-1. `git add` and `git commit` your changes.
-1. Run the development server with `npm start`.
+Once user creates an account and is logged in, they can select a store then department and add items associated with the department.  The list will sort based on each store's layout.  Users can continously add to the list, while simply using the check the box to indicate when they run out of the item on the list.  Then unchecking the box once the item is placed in the shopping cart.
 
-## About
+![Image of App](/app.png)
 
-This template is derived from GA Boston's [react-template](https://git.generalassemb.ly/ga-wdi-boston/react-template).
-Most of the development dependencies, such as linters, SCSS compiler, Webpack
-config, NPM scripts, etc in this repo come from there.
+## Technologies used
 
-It includes all the components and routes needed to sign up, sign in, change
-passwords, and sign out of an API built with either template linked above, with
-no need for modification.
+- HTML
+- CSS
+- Javascript
+- React
+- git
+- Rails
+- Materials UI
 
-**NOTE**: You should customize the included components to suit you app! They're
-provided as a guide and a bare minimum of functionality and style. Consider
-changing the provided SCSS styles, modifying the auth code, improving the flash
-messages, etc.
+## Next Version
 
-## Structure
+- Rearrange the list based on store entry point
+- Share common items from store to store
+- Incorporate weekly sales into the list
+- styling
 
-Currently, the top-level `App` component stores the currently authenticated
-user in state, as well as data related to the flash messages. `App` renders the
-`Header` component, and a list of routes, each of which render a component from
-`src/auth/components`. The `auth` directory has two non-component files, `api`
-and `messages`, which contain all the needed `fetch` calls, and messages to
-display when API calls succeed or fail, respectively.
+## Planning
 
-We recommend following this pattern in your app. For instance, if you are making
-an app that keeps track of books, you might want a `books` directory next to
-`auth`, which contains its own `api` and `messages` files, as well as a
-`components` directory.
+The process started with planning a user story and ERD, then the wireframe just fell into place.  The user authentication was built using React and the backend API was created with Rails.  After all of that is set up, The majority of the time was allocated to creating RESTful routes and styling the website.  Lack of experience with React was a challenge in the beginning but in combination with Materials UI, developing the UI was very streamline.
 
-## Features
+## User Story
 
-### `<AuthenticatedRoute />`
+[User Story](https://i.imgur.com/zKVDD3M.png)
 
-This template contains a handy component for creating routes that require a
-user to be authenticated before visiting. This component lives in
-`src/auth/components/AuthenticatedRoute.js` and is already required in `App`.
-It's a thin wrapper around React Router's `<Route />` component. The only
-difference is that it expects a prop called `user`, and if that prop is falsy,
-it will render a `<Redirect />` that takes the user to `/`. **If you want to use
-it, you must pass it the currently authenticated as a prop!**
+## Wireframes
 
-It supports both the `component=` and `render=` attributes, but like `<Route />`
-it will not forward props to the component if you use `component=`.
+[Wireframes](https://imgur.com/a/CKpCRym)
 
-### Flash Messages
+## Entity Relationship Diagram (ERD)
 
-The `App` component has a rudimentary version of flash messages. To use it,
-pass `this.flash` into a subcomponent of `App` as a prop and call it from there.
-It expects two arguments: a message to display, and a message type, which is one
-of `'flash-success'`, `'flash-warning'`, and `'flash-error'` which make the
-message green, yellow, and red, respectively. You must pass one of these types.
-You can add more types by adding more CSS rules in `App.scss`.
+[ERD](https://i.imgur.com/hroANbd.png)
 
-In the auth components, flash messages are used in conjunction with the
- `auth/messages` file to select from a list of predefined success/failure
- messages. To undertand how to do this, look at the definition of `flash` in
- `App.js`, the `signUp` method in `auth/components/SignUp.js`, and the
- `auth/messages.js` file.
+## Store mApp Client
 
- To change the duration of the message, replace `2000` with a value of your
- choice (in milliseconds) in the `flash` method definition in `App.js`.
+[Client Website](https://calla-mari.github.io/Store-mApplication-Client/)
 
- ### `src/apiConfig.js`
+[Client Repository](https://github.com/calla-mari/Store-mApplication-Client)
 
- Just like in
-[browser-template](https://git.generalassemb.ly/ga-wdi-boston/browser-template),
-this file will determine whether you're in a production or development
-environment and choose an API URL accordingly. Don't forget to replace the
-`production` URL with your deployed API's URL.
+## Store mApp Server
 
-## [License](LICENSE)
+[Server Website](https://store-mapplication.herokuapp.com/)
 
-1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
-1.  All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+[Server Repository](https://github.com/calla-mari/Store-mApplication-API)
+
+## Catalog of Routes:
+## Authentication
+
+| Verb   | URI Pattern            | Controller#Action |
+|--------|------------------------|-------------------|
+| POST   | `/sign-up`             | `users#signup`    |
+| POST   | `/sign-in`             | `users#signin`    |
+| PATCH  | `/change-password/`    | `users#changepw`  |
+| DELETE | `/sign-out/`           | `users#signout`   |
+| GET    | `/users/:id`           | `users#show`      |
+
+
+## Grocery Lists
+
+| Verb   | URI Pattern              | Controller#Action          |
+|--------|--------------------------|----------------------------|
+| POST   | `/grocery_lists/new`     | `grocery_lists#create`     |
+| GET    | `/grocery_lists`         | `grocery_lists#index`      |
+| PATCH  | `/grocery_lists/:id/edit`| `grocery_lists#update`     |
+| DELETE | `/grocery_lists/:id`     | `grocery_lists#destroy`    |
+
+## Installation Guide
+
+## Front End Installation (this repo)
+1. Fork and Clone this repository.
+2. Install dependencies with `npm install`.
+3. Run the development server with npm start.
+
+## Back end Installation (https://github.com/calla-mari/Store-mApplication-API)
+
+1. Fork and Clone this repository.
+2. Install dependencies with `bundle install.`
+3. Run the development server with npm start.
+4. Create a .env for sensitive settings (`touch .env`).
+5. Generate new development and test secrets (`bundle exec rails secret`).
+6. Store them in .env with keys `SECRET_KEY_BASE_<DEVELOPMENT|TEST>` respectively.
+7. Set up a Heroku server
+8. Set up your database with the following:
+  - `bin/rails db:drop` (if it already exists)
+  - `bin/rails db:create`
+  - `bin/rails db:migrate`
+  - `bin/rails db:seed` (seeds the mountains csv in lib/seed)
+9. Run the API server with `bin/rails server` or `bundle exec rails server.`

@@ -50,12 +50,8 @@ class AddModal extends React.Component {
   handleChange(event) {
     const addItem = { ...this.state.grocery_list, [event.target.name]: event.target.value }
     this.setState({grocery_list: addItem})
-    console.log(this.state.grocery_list)
   }
 
-  // handleChange = event => this.setState({
-  //   [event.target.name]: event.target.value
-  // })
 
   addItem = event => {
     event.preventDefault()

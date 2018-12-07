@@ -20,6 +20,14 @@ import Fab from '@material-ui/core/Fab'
 
 import './showAll.scss'
 
+
+const departmentTable = {
+	MarketBasket: ['dairy', 'bread', 'cereal', 'can', 'meat',  'fruit', 'vegetable', 'frozen'],
+	WholeFoods: ['vegetable', 'fruit', 'dairy', 'meat', 'frozen',  'bread', 'can', 'cereal'],
+	// StarMarket: ['dairy', 'bread', 'cereal', 'can', 'meat',  'fruit', 'vegetable', 'frozen'],
+	Costco: ['electronics', 'appliance', 'meat', 'dairy',  'fruit', 'vegetable', 'frozen', 'pet', 'can', 'paper', 'bread', 'cleaning'],
+}
+
 class ShowAllItem extends React.Component {
 	constructor(props) {
 		super(props)
@@ -49,7 +57,6 @@ class ShowAllItem extends React.Component {
 	deleteItem = event => {
 		const { user } = this.props
 		const id = event.target.getAttribute('id')
-		console.log(event.target)
 		
 		onDeleteItem(id, user)
 		.then(() => {
@@ -63,18 +70,23 @@ class ShowAllItem extends React.Component {
   render() {
 		let itemRows
 		const { grocery_lists } = this.state
-		console.log(grocery_lists)
     
     if (grocery_lists.length === 0) {
 			itemRows = <tr><td>You have no items in you list</td></tr>
     } else {
+			const ordering = departmentTable[this.props.store]
+			grocery_lists.sort(function( a, b ) {
+				return ordering.indexOf(a.department) - ordering.indexOf(b.department)
+			})
+			
 			itemRows = grocery_lists.map(product => {
 				const { id, store, checkbox, department, item, amount } = product
 				const link = {
 					pathname: `/grocery_lists/${id}/edit`,
           grocery_listsParams: [id, store, checkbox, department, item, amount]
-        }
+				}
         return (
+				(product.store === this.props.store) &&
 				
 					<TableRow className="itemTable" key={id}>
 						<TableCell padding="checkbox">
@@ -120,12 +132,12 @@ class ShowAllItem extends React.Component {
     return(
 				<div>
 					<h1 style={{textAlign: 'center'}}>What do I need to buy?
-						<Link to='/grocery_lists/new' replace >
+						{/* <Link to='/grocery_lists/new' replace >
 							<Fab color='primary' aria-label="Add" className="fab">
 								<AddIcon />
-								{/* <Icon>add_circle</Icon> */}
+								<Icon>add_circle</Icon>
 							</Fab>
-						</Link>
+						</Link> */}
 					</h1>
 					<Paper>
 						<Table>

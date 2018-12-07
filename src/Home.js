@@ -10,9 +10,9 @@ class Home extends React.Component {
             <h1>Let&#39;s spend some $$</h1>
             <h3>Tackle that shopping list!!</h3>
             <img 
-              src="https://i.imgur.com/2nqgSEN.png" 
+              src="https://i.imgur.com/5ABjaWv.png" 
               alt="shop" 
-              height="700" 
+              height="600" 
             ></img>
           </div>
         </div>

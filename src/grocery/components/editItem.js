@@ -14,7 +14,6 @@ class EditItem extends Component {
   constructor (props) {
     super(props)
     const initialData = props.location.grocery_listsParams
-    console.log(initialData)
 
     this.state = {
       grocery_list: {
@@ -71,9 +70,8 @@ class EditItem extends Component {
 
   render () {
     if (this.state.edited === true) {
-      return <Redirect to='/grocery_lists' />
+      return <Redirect to='/Map' />
     }
-    console.log(this.state.grocery_list)
     const { store, checkbox, department, item, amount } = this.state.grocery_list
     return (
       <form className='userForm' onSubmit={this.editItem}>

@@ -28,7 +28,6 @@ class AddItem extends Component {
   handleChange(event) {
     const addItem = { ...this.state.grocery_list, [event.target.name]: event.target.value }
     this.setState({grocery_list: addItem})
-    console.log(this.state.grocery_list)
   }
 
   // handleChange = event => this.setState({
@@ -52,7 +51,7 @@ class AddItem extends Component {
 
   render () {
     if (this.state.new === true) {
-      return <Redirect to='/grocery_lists' />
+      return <Redirect to='/Map' />
     }
     const { store, checkbox, department, item, amount } = this.state.grocery_list
     return (

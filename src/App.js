@@ -14,13 +14,15 @@ import ShowAllItem from './grocery/components/showAllItem'
 import AddItem from './grocery/components/addItem'
 import EditItem from './grocery/components/editItem'
 import Store from './Store.js'
-import MapMB from './MapMB.js'
-import MapWF from './MapWF.js'
-import MapStar from './MapStar.js'
-import MapCostco from './MapCostco.js'
-import MapTarget from './MapTarget.js'
-import MapWalmart from './MapWalmart.js'
-import Card from './Card.js'
+import Map from './Map.js'
+import WDI from './WDI027.js'
+
+const stores = [
+  {name: 'MarketBasket', image: 'https://i.imgur.com/4MmHhtO.jpg', abbrev: 'MB'},
+  {name: 'WholeFoods', image: 'https://i.imgur.com/Oibd8or.jpg', abbrev: 'WF'},
+  // {name: 'StarMarket', image: 'https://s3.amazonaws.com/s3.wodsfm.radio.com/styles/delta__775x515/s3/Star.jpg?itok=YeZtXDbB', abbrev: 'SM'},
+  {name: 'Costco', image: 'http://miami-water.com/blog/wp-content/uploads/2012/06/Costco-Logo.jpg', abbrev: 'Cs'}
+]
 
 class App extends Component {
   constructor () {
@@ -52,8 +54,7 @@ class App extends Component {
 
   render () {
     const { flashMessage, flashType, user } = this.state
-    console.log(this.state)
-
+    
     return (
       <React.Fragment>
         <Header user={user} />
@@ -85,28 +86,13 @@ class App extends Component {
             <EditItem flash={this.flash} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/Store' render={() => (
-            <Store flash={this.flash} user={user} updateStore={this.setStore} updateDept={this.setDepartment} store={this.state.store} />
+            <Store flash={this.flash} user={user} updateStore={this.setStore} stores={stores} />
           )} />
-          <AuthenticatedRoute user={user} exact path='/MapMB' render={() => (
-            <MapMB flash={this.flash} user={user} updateStore={this.setStore} updateDept={this.setDepartment} store={this.state.store} />
+          <AuthenticatedRoute user={user} exact path='/Map' render={() => (
+            <Map flash={this.flash} user={user} updateStore={this.setStore} updateDept={this.setDepartment} store={this.state.store} />
           )} />
-          <AuthenticatedRoute user={user} exact path='/MapWF' render={() => (
-            <MapWF flash={this.flash} user={user} updateStore={this.setStore} updateDept={this.setDepartment} store={this.state.store} />
-          )} />
-          <AuthenticatedRoute user={user} exact path='/MapStar' render={() => (
-            <MapStar flash={this.flash} user={user} updateStore={this.setStore} updateDept={this.setDepartment} store={this.state.store} />
-          )} />
-          <AuthenticatedRoute user={user} exact path='/MapCostco' render={() => (
-            <MapCostco flash={this.flash} user={user} updateStore={this.setStore} updateDept={this.setDepartment} store={this.state.store} />
-          )} />
-          <AuthenticatedRoute user={user} exact path='/MapTarget' render={() => (
-            <MapTarget flash={this.flash} user={user} updateStore={this.setStore} updateDept={this.setDepartment} store={this.state.store} />
-          )} />
-          <AuthenticatedRoute user={user} exact path='/MapWalmart' render={() => (
-            <MapWalmart flash={this.flash} user={user} updateStore={this.setStore} updateDept={this.setDepartment} store={this.state.store} />
-          )} />
-          <AuthenticatedRoute user={user} exact path='/Card' render={() => (
-            <Card flash={this.flash} user={user} />
+          <AuthenticatedRoute user={user} exact path='/WDI' render={() => (
+            <WDI flash={this.flash} user={user} />
           )} />
         </main>
       </React.Fragment>
