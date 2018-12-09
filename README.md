@@ -1,4 +1,4 @@
-[![Store mApp](https://i.imgur.com/mPywnJL.png)](https://calla-mari.github.io/grocery-store-client/)
+[![Store mApp](https://i.imgur.com/yo8Yi8d.png)](https://calla-mari.github.io/grocery-store-client/)
 
 # Store mApp
 
