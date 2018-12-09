@@ -52,7 +52,8 @@ class EditItem extends Component {
       item: this.state.grocery_list.item,
       amount: this.state.grocery_list.amount
     }
-
+    const { flash, history, user } = this.props
+    
     onEditItem(this.props.match.params.id, edited, this.props.user)
       .then(handleErrors)
       .then((response)=> {

@@ -52,11 +52,11 @@ class Store extends React.Component {
                   />
                 </Link>
               </CardActionArea>
-              <CardActions style={{justifyContent: 'center'}}>
+              {/* <CardActions style={{justifyContent: 'center'}}>
                 <Link to='/Map' replace >
                   <Icon>list</Icon>
                 </Link>
-              </CardActions>
+              </CardActions> */}
             </Card> 
           )
         })
