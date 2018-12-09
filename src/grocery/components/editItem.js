@@ -1,11 +1,12 @@
 /* eslint-disable indent */
 import React, { Component } from 'react'
-import { withRouter, Redirect } from 'react-router-dom'
+import { withRouter, Redirect, Link } from 'react-router-dom'
 import API_BASE_URL from '../../config/api.js'
 
 import { handleErrors, onEditItem } from '../api'
 import messages from '../messages'
 import apiUrl from '../../apiConfig'
+import Icon from '@material-ui/core/Icon'
 import Button from '@material-ui/core/Button'
 
 import './form.scss'
@@ -53,7 +54,7 @@ class EditItem extends Component {
       amount: this.state.grocery_list.amount
     }
     const { flash, history, user } = this.props
-    
+
     onEditItem(this.props.match.params.id, edited, this.props.user)
       .then(handleErrors)
       .then((response)=> {
@@ -76,6 +77,11 @@ class EditItem extends Component {
     const { store, checkbox, department, item, amount } = this.state.grocery_list
     return (
       <form className='userForm' onSubmit={this.editItem}>
+        <div>
+          <Link className='close' to='/Map' replace>
+            <Icon>close</Icon>
+          </Link>
+        </div>
         <h3>Update Item</h3>
         {/* <label htmlFor="checkbox">Active</label>
         <input 

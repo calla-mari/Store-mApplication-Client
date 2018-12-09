@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter, Redirect } from 'react-router-dom'
+import { withRouter, Redirect, Link } from 'react-router-dom'
 
 import { handleErrors, addItem } from '../api'
 import messages from '../messages'
@@ -56,6 +56,11 @@ class AddItem extends Component {
     const { store, checkbox, department, item, amount } = this.state.grocery_list
     return (
       <form className='userForm' onSubmit={this.addItem}>
+        <div>
+          <Link className='close' to='/Map' replace>
+            <Icon>close</Icon>
+          </Link>
+        </div>
         <h3>Add An Item</h3>
         {/* <input 
         <label htmlFor="checkbox">checkbox</label>

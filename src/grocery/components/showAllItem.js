@@ -55,7 +55,7 @@ class ShowAllItem extends React.Component {
 	}
 	
 	deleteItem = event => {
-		const { user } = this.props
+		const { flash, history, user } = this.props 
 		const id = event.target.getAttribute('id')
 		
 		onDeleteItem(id, user)
@@ -66,11 +66,10 @@ class ShowAllItem extends React.Component {
 		.catch(() => flash(messages.showFail, 'flash-error'))
   }
 	
-	
   render() {
 		let itemRows
 		const { grocery_lists } = this.state
-    
+		
     if (grocery_lists.length === 0) {
 			itemRows = <tr><td>You have no items in you list</td></tr>
     } else {
@@ -85,6 +84,7 @@ class ShowAllItem extends React.Component {
 					pathname: `/grocery_lists/${id}/edit`,
           grocery_listsParams: [id, store, checkbox, department, item, amount]
 				}
+
         return (
 				(product.store === this.props.store) &&
 				
