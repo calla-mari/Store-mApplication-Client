@@ -62,6 +62,7 @@ class AddItem extends Component {
           </Link>
         </div>
         <h3>Add An Item</h3>
+        <h5>Department: {this.props.department}</h5>
         {/* <input 
         <label htmlFor="checkbox">checkbox</label>
           id="checkbox" 

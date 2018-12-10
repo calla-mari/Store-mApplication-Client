@@ -83,6 +83,7 @@ class EditItem extends Component {
           </Link>
         </div>
         <h3>Update Item</h3>
+        <h5>Department: {this.state.grocery_list.department}</h5>
         {/* <label htmlFor="checkbox">Active</label>
         <input 
           id="checkbox" 
