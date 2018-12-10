@@ -118,6 +118,7 @@ class EditItem extends Component {
           id="amount" 
           name="amount" 
           type="number"
+          min="0"
           value={amount} 
           onChange={this.handleChange} 
         />
